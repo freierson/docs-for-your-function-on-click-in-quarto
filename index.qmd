@@ -1,0 +1,21 @@
+---
+format: html
+embed-resources: true
+---
+
+```{r}
+#| results: asis
+#| echo: false
+source('docs-on-click.R')
+box::use(lib/example[add, multiply])
+docs <- get_doc_md(add)
+cat_documentation(docs)
+```
+
+```{r}
+add(5,11)
+multiply(5,5)
+```
+
+
+
