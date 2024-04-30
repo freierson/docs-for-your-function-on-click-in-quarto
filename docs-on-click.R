@@ -1,8 +1,9 @@
+# thanks to https://github.com/fleverest for writing the key part of this function
 get_doc_md <- function(fn) {
   mod <- substitute(fn) |>
     box:::help_topic_target(parent.frame()) |>
-    `[[`(x = _, 1L)
-  box:::parse_documentation(attr(mod, "info"), attr(mod, "namespace")) |>
+      `[[`(x = _, 1L)
+    box:::parse_documentation(attr(mod, "info"), attr(mod, "namespace")) |>
     lapply(\(x) x |>  
              Rd2md::rd_str_to_md(fragment = F,section_level=4) |>
              gsub("^####\\s+(.*?)\n\n", "### `\\1`", x=_, perl=F) |>
